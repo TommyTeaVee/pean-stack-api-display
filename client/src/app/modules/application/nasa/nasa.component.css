@@ -1,0 +1,41 @@
+.main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  max-width: 800px;
+}
+
+.card-title {
+  padding-left: 60px;
+}
+
+.card-subtitle {
+  padding-left: 60px;
+}
+
+.card-text {
+  margin: 16px 0;
+}
+
+.header-image {
+  width: 48px;
+  height: 48px;
+}
+
+#video {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+}
+
+iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,64 @@
+<head>
+  <meta name="description" content="Shows data from the Google Books api" />
+  <!-- <link rel="preload" href="http://books.google.com" as "fetch"> -->
+</head>
+
+<body>
+  <div class="main-div">
+    <!--card for user book search-->
+    <div class="rounded card">
+      <div class="card-body bg-light">
+        <!--User input of book title-->
+        <form
+          #searchForm="ngForm"
+          (ngSubmit)="bookQuery(searchWord.value); searchForm.reset()"
+        >
+          <input
+            #searchWord="ngModel"
+            type="text"
+            ngModel
+            name="searchQuery"
+            id="searchQuery"
+            placeholder="Enter book title.."
+            aria-label="Enter book title"
+            name="search"
+            required
+          />
+          <button
+            class="btn btn-dark"
+            [disabled]="searchForm.invalid"
+            type="submit"
+          >
+            Search
+          </button>
+          <button
+            *ngIf="storedItems"
+            class="btn btn-warning"
+            type="button"
+            (click)="clearStore()"
+          >
+            Clear
+          </button>
+        </form>
+      </div>
+    </div>
+    <!--cards for book search result-->
+    <div class="row" *ngIf="booksArray">
+      <div
+        class="p-2 text-center book-card col-lg-2 col-md-3 col-sm-3 col-xs-6"
+        *ngFor="let book of booksArray; trackBy: bookTrackbyFn"
+      >
+        <img
+          src="{{
+            book.volumeInfo.imageLinks != undefined
+              ? book.volumeInfo.imageLinks.smallThumbnail
+              : 'assets/params/images/not-found.png'
+          }}"
+          style="width: 140px; height: 224px"
+          (click)="onGoToBookDetail(book)"
+          alt="Book image"
+        />
+      </div>
+    </div>
+  </div>
+</body>

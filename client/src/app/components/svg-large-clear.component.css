@@ -1,0 +1,11 @@
+svg {
+  width: 40px;
+  height: 40px;
+  background: inherit;
+  background-color: inherit;
+}
+
+img {
+  width: inherit;
+  height: inherit;
+}

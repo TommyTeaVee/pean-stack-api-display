@@ -1,0 +1,45 @@
+<head>
+  <meta name="description" content="Shows cryptocurrency api data" />
+</head>
+
+<div class="card rounded text-center" *ngIf="cryptos">
+  <div class="card-body p-0">
+    <table class="table table-hover table-bordered">
+      <thead class="bg-light">
+        <tr>
+          <th scope="col">Cryptocurrency</th>
+          <th scope="col">Symbol</th>
+          <th scope="col" class="text-right">&#x20AC; Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let crypto of objectKeys(cryptos); trackBy: cryptoTrackbyFn">
+          <th scope="row">{{ crypto }}</th>
+          <td>
+            <img
+              src="../../../../assets/icons/crypto-icons/{{
+                crypto | lowercase
+              }}.svg"
+              alt="crypto icon for {{ crypto }}"
+            />
+          </td>
+          <td class="text-right">
+            {{ cryptos[crypto].EUR | currency: "EUR" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer backgroundSecondaryBlue text-light">
+    <p class="mb-0 text-left">
+      Data from the:<a
+        class="crypto-footer-link"
+        href="https://min-api.cryptocompare.com/"
+        rel="noreferrer"
+        target="_blank"
+        title="cryptoCurrency_link"
+        >CryptoCompare API</a
+      >
+    </p>
+  </div>
+</div>

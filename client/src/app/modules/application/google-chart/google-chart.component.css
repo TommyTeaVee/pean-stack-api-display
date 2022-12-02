@@ -1,0 +1,16 @@
+.main-div {
+  justify-content: center;
+  align-items: center;
+}
+
+.card .accordion {
+  max-width: 700px;
+  margin: auto auto;
+}
+
+.header-image {
+  background-size: cover;
+  width: 48px;
+  height: 48px;
+  margin-right: 8px;
+}

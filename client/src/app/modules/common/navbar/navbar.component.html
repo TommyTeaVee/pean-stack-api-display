@@ -1,0 +1,229 @@
+<nav
+  class="navbar navbar-expand-md fixed-top navbar-dark"
+>
+  <a
+    class="nav-link mb-3"
+    style="height: 40px; margin: 12px 4px 0 4px;"
+    aria-label="home nav link active"
+    [routerLink]="['/']"
+    routerLinkActive="nav-link-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <span class="mr-1">
+      <div *ngIf="isHomeRoute()">
+        <app-svg-list style="fill: #f3b4ee !important;"></app-svg-list>
+      </div>
+      <div *ngIf="!isHomeRoute()">
+        <app-svg-list style="fill: white !important"></app-svg-list>
+      </div>
+
+      <!-- {{ name }} -->
+    </span>
+  </a>
+
+  <!--page titles that appear in nav-bar in active color only when page is active-->
+  <div *ngIf="isHomeRoute()">
+    <a
+      class="nav-link"
+      aria-label="home nav link active"
+      [routerLink]="['/']"
+      routerLinkActive="nav-link-active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      {{ name }}
+    </a>
+  </div>
+
+  <div *ngIf="isNasaRoute()">
+    <a
+      class="nav-link"
+      aria-label="nasa nav link active"
+      [routerLink]="['/nasa']"
+      routerLinkActive="nav-link-active"
+    >
+      Nasa API
+    </a>
+  </div>
+
+  <div *ngIf="isCryptoRoute()">
+    <a
+      class="nav-link"
+      aria-label="crypto nav link active"
+      [routerLink]="['/crypto']"
+      routerLinkActive="nav-link-active"
+    >
+      Crypto API
+    </a>
+  </div>
+
+  <div *ngIf="isMapRoute()">
+    <a
+      class="nav-link"
+      aria-label="map nav link active"
+      [routerLink]="['/map']"
+      routerLinkActive="nav-link-active"
+    >
+      Map API
+    </a>
+  </div>
+
+  <div *ngIf="isNewsRoute()">
+    <a
+      class="nav-link"
+      aria-label="news nav link active"
+      [routerLink]="['/news']"
+      routerLinkActive="nav-link-active"
+    >
+      NYT News API
+    </a>
+  </div>
+
+  <div *ngIf="isGoogleChartsRoute()">
+    <a
+      class="nav-link"
+      aria-label="google charts nav link active"
+      [routerLink]="['/google-charts']"
+      routerLinkActive="nav-link-active"
+    >
+      Google Charts API
+    </a>
+  </div>
+
+  <div *ngIf="isBooksRoute()">
+    <a
+      class="nav-link"
+      aria-label="Google books nav link active"
+      [routerLink]="['/books']"
+      routerLinkActive="nav-link-active"
+    >
+      Google Books API
+    </a>
+  </div>
+
+  <div *ngIf="isBookDetailRoute()">
+    <a
+      class="nav-link"
+      aria-label="book detail nav link active"
+      [routerLink]="['/book-detail/']"
+      routerLinkActive="nav-link-active"
+    >
+      Google Books API
+    </a>
+  </div>
+
+  <div *ngIf="isNytBestsellersRoute()">
+    <a
+      class="nav-link"
+      aria-label="New York Times bestsellers nav link active"
+      [routerLink]="['/nyt-bestsellers']"
+      routerLinkActive="nav-link-active"
+    >
+      NYT Bestsellers API
+    </a>
+  </div>
+
+  <div *ngIf="isBestsellerDetailRoute()">
+    <a
+      class="nav-link"
+      aria-label="New York Times bestseller detail nav link active"
+      [routerLink]="['/bestseller-detail']"
+      routerLinkActive="nav-link-active"
+    >
+      NYT Bestsellers API
+    </a>
+  </div>
+
+  <div *ngIf="isGithubUserRoute()">
+    <a
+      class="nav-link"
+      aria-label="github nav link active"
+      [routerLink]="['/github']"
+      routerLinkActive="nav-link-active"
+    >
+      Github API
+    </a>
+  </div>
+
+  <div *ngIf="isGithubRepoRoute()">
+    <a
+      class="nav-link"
+      aria-label="github repos nav link active"
+      [routerLink]="['/github-repos/']"
+      routerLinkActive="nav-link-active"
+    >
+      Github API
+    </a>
+  </div>
+
+  <div *ngIf="isAboutRoute()">
+    <a
+      class="nav-link"
+      aria-label="about nav link active"
+      [routerLink]="['/about']"
+      routerLinkActive="nav-link-active"
+    >
+      About App
+    </a>
+  </div>
+
+  <div *ngIf="isContactRoute()">
+    <a
+      class="nav-link"
+      aria-label="contact nav link active"
+      [routerLink]="['/contact']"
+      routerLinkActive="nav-link-active"
+    >
+      About Author
+    </a>
+  </div>
+
+  <!--burger menu bar button only toggled on when small page size-->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#mainNavbar"
+    aria-controls="mainNavbar"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="mainNavbar">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a
+          class="nav-link"
+          aria-label="about nav link"
+          routerLink="/about"
+          routerLinkActive="nav-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <app-svg-info></app-svg-info>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a
+          class="nav-link"
+          aria-label="contact nav link"
+          routerLink="/contact"
+          routerLinkActive="nav-link-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <app-svg-contact></app-svg-contact>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+        <a
+          class="nav-link"
+          aria-label="github nav link"
+          href="https://github.com/TommyTeaVee"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <app-svg-github></app-svg-github>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,152 @@
+<head>
+  <meta name="api" content="Shows Google Book search detail" />
+</head>
+
+<div class="main-div">
+  <div class="card">
+    <div class="row no-gutters">
+      <div class="col-sm-4" style="background: #ffffff">
+        <img
+          src="{{
+            book.volumeInfo.imageLinks != undefined
+              ? book.volumeInfo.imageLinks.thumbnail
+              : 'assets/params/images/not-found.png'
+          }}"
+          class="card-img-top h-100"
+          alt="book thumbnail image"
+        />
+      </div>
+      <div class="col-sm-8">
+        <div class="card-body">
+          <div class="d-flex flex-column">
+            <div>
+              <h5>
+                <span class="text-dark font-weight-bold">Title: </span>
+                {{ book.volumeInfo.title }}
+              </h5>
+            </div>
+            <div *ngIf="book.volumeInfo.authors">
+              <p>
+                <span class="textSecondaryBlue font-weight-bold"
+                  >Authors:
+                </span>
+                {{ book.volumeInfo.authors }}
+              </p>
+            </div>
+            <div *ngIf="book.volumeInfo.publisher">
+              <p>
+                <span class="textSecondaryBlue font-weight-bold"
+                  >Publisher:
+                </span>
+                {{ book.volumeInfo.publisher }}
+              </p>
+            </div>
+            <div *ngIf="book.volumeInfo.publishedDate">
+              <p>
+                <span class="textSecondaryBlue font-weight-bold"
+                  >Date Published:
+                </span>
+                {{ book.volumeInfo.publishedDate | date }}
+              </p>
+            </div>
+            <div *ngIf="book.volumeInfo.industryIdentifiers[0].identifier">
+              <p>
+                <span class="textSecondaryBlue font-weight-bold"
+                  >ISBN Number:
+                </span>
+                {{ book.volumeInfo.industryIdentifiers[0].identifier }}
+              </p>
+            </div>
+            <div *ngIf="book.volumeInfo.language">
+              <p>
+                <span class="textSecondaryBlue font-weight-bold"
+                  >Language:
+                </span>
+                <span class="badge bg-warning">{{
+                  book.volumeInfo.language
+                }}</span>
+              </p>
+            </div>
+
+            <div *ngIf="book.volumeInfo.categories">
+              <p>
+                <span
+                  class="textSecondaryBlue font-weight-bold"
+                  *ngIf="book.volumeInfo.categories.length === 1"
+                  >Category:
+                </span>
+                <span
+                  class="textSecondaryBlue font-weight-bold"
+                  *ngIf="book.volumeInfo.categories.length > 1"
+                  >Categories:
+                </span>
+                <span class="badge bg-secondary">{{
+                  book.volumeInfo.categories[0]
+                }}</span>
+                <span
+                  class="badge bg-info"
+                  *ngIf="book.volumeInfo.categories[1]"
+                  >{{ book.volumeInfo.categories[1] }}</span
+                >
+              </p>
+            </div>
+            <div *ngIf="book.volumeInfo.pageCount">
+              <p>
+                <span class="textSecondaryBlue font-weight-bold"
+                  >Number of Pages:
+                </span>
+                <span class="badge bg-primary">{{
+                  book.volumeInfo.pageCount
+                }}</span>
+              </p>
+            </div>
+            <div *ngIf="book.volumeInfo.averageRating">
+              <p>
+                <span class="textSecondaryBlue font-weight-bold"
+                  >Average Rating:
+                </span>
+                <span class="badge bg-success">{{
+                  book.volumeInfo.averageRating
+                }}</span>
+              </p>
+            </div>
+            <!--group of buttons at bottom of rhs list-->
+            <div class="d-flex justify-content-around">
+              <div class="p-2">
+                <a
+                  (click)="returnToList()"
+                  class="btn btn-outline-primary textSecondaryBlue"
+                  >Back to List</a
+                >
+              </div>
+              <div *ngIf="book.volumeInfo.infoLink" class="p-2 text-dark">
+                <a
+                  href="{{ book.volumeInfo.infoLink }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-outline-dark"
+                  >More info.</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p
+        class="card-text textSecondaryBlue text-justify p-3"
+        *ngIf="book.volumeInfo.description"
+      >
+        <span class="text-dark font-weight-bold">Description: </span>
+        {{ book.volumeInfo.description }}
+      </p>
+      <p
+        class="card-text textSecondaryBlue p-3"
+        *ngIf="!book.volumeInfo.description"
+      >
+        <span class="text-secondary">No description available</span>
+      </p>
+    </div>
+  </div>
+</div>

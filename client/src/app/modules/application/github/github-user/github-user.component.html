@@ -1,0 +1,79 @@
+<head>
+  <meta name="description" content="Shows repo user data from the Github API" />
+</head>
+
+<div class="card rounded" *ngIf="user">
+  <div class="card-header bg-light">
+    <img
+      class="header-image float-left"
+      [src]="user.avatar_url"
+      alt="Github user profile photo"
+    />
+    <h5 class="card-title textSecondaryBlue">{{ user.name }}</h5>
+    <!--user bio-->
+    <h6 class="card-subtitle">
+      <div *ngIf="user.location">
+        <app-svg-globe class="text-dark pr-1"></app-svg-globe>
+        <span class="textSecondaryBlue">{{ user.location }}</span>
+      </div>
+      <div *ngIf="!user.location">
+        <app-svg-globe></app-svg-globe>
+        No user location data
+      </div>
+    </h6>
+  </div>
+  <div class="card-body pb-0">
+    <!--user bio-->
+    <p>
+      <app-svg-user></app-svg-user>
+      <span *ngIf="user.bio" class="px-1 textSecondaryBlue">{{
+        user.bio
+      }}</span>
+      <span *ngIf="!user.bio" class="pr-1">No user bio</span>
+    </p>
+
+    <!--user repos, joined date-->
+    <p class="text-dark">
+      Repos:
+      <span *ngIf="user.public_repos" class="textSecondaryBlue pr-2">{{
+        user.public_repos
+      }}</span>
+      <span *ngIf="!user.public_repos" class="textSecondaryBlue pr-2"
+        >no user repos</span
+      >
+      Joined:
+      <span class="textSecondaryBlue pr-2">{{
+        user.created_at | dateConvert
+      }}</span>
+    </p>
+
+    <!--user following, followers-->
+    <p class="text-dark">
+      Following:
+      <span class="textSecondaryBlue pr-2">{{ user.following }}</span>
+      Followers:
+      <span class="textSecondaryBlue pr-2">{{ user.followers }}</span>
+    </p>
+  </div>
+  <div class="d-flex justify-content-around">
+    <div class="p-2">
+      <a
+        [routerLink]="['/github-repos', user.login]"
+        class="btn btn-outline-dark"
+      >
+        <app-svg-folder class="pr-1"></app-svg-folder
+        ><span class="textSecondaryBlue">Repos</span>
+      </a>
+    </div>
+    <div class="p-2">
+      <a
+        href="{{ user.html_url }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline-dark"
+        ><app-svg-person class="pr-1"></app-svg-person
+        ><span class="textSecondaryBlue">Profile</span></a
+      >
+    </div>
+  </div>
+</div>

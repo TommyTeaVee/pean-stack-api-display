@@ -1,0 +1,12 @@
+.main {
+  justify-content: center;
+  align-items: center;
+}
+
+.bestseller-card {
+  padding: 12px auto;
+}
+
+.card-text {
+  margin: 16px 0;
+}

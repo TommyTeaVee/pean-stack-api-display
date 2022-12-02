@@ -1,0 +1,25 @@
+<head>
+  <meta
+    name="description"
+    content="Shows data from the New York Times Bestsellers API"
+  />
+  <!-- <link rel="preload" href="https://api.nytimes.com" as "fetch">
+  <link rel="preload" href="https://s1.nyt.com" as "fetch"> -->
+</head>
+
+<body>
+  <div class="main">
+    <!--cards for bestseller API results-->
+    <div class="row">
+      <div
+        class="bestseller-card align-center col-lg-2 col-md-4 col-sm-4 col-xs-6 pb-3"
+        *ngFor="let bestseller of bestsellerLists$ | async; index as i"
+      >
+        <app-bestseller-item
+          [bestseller]="bestseller"
+          (click)="onGoToBestsellerDetail(bestseller)"
+        ></app-bestseller-item>
+      </div>
+    </div>
+  </div>
+</body>

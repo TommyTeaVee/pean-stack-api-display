@@ -1,0 +1,71 @@
+<head>
+  <meta name="description" content="Shows Nasa api data" />
+  <!-- <link rel="preload" href="https://api.nasa.gov/planetary/apod?" as "fetch">
+  <link rel="preload" href="https://api.nasa.gov" as "fetch"> -->
+</head>
+
+<div class="main-div" *ngIf="nasaImgObj$ | async as nasaImgObj">
+  <div class="card rounded">
+    <div class="card-header bg-light">
+      <div class="row">
+        <div class="col-2">
+          <img
+          class="header-image float-left"
+          src="../../../../assets/params/images/logo/nasa-image.png"
+          alt="Nasa logo"
+        />
+        </div>
+        <div class="col-10">
+          <h6 class="card-title text-dark float-left p-0">Today's Image:</h6>
+          <h5 class="card-subtitle font-italic float-left p-0">
+            {{ nasaImgObj.title }}
+          </h5>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="card-body">
+      <!-- Show image if the media_type = image -->
+      <img
+        class="card-img-top"
+        [src]="nasaImgObj.hdurl"
+        alt="Card image"
+        *ngIf="nasaImgObj.media_type === 'image'"
+      />
+
+      <div id="video" *ngIf="nasaImgObj.media_type === 'video'">
+        <!-- Display and embed the YouTube video if the media_type is set to video -->
+        <iframe
+          *ngIf="nasaImgObj.media_type === 'video'"
+          [src]="nasaImgObj.url | safe: 'resourceUrl'"
+          width="560" height="315"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <p class="card-text">
+        <i class="far fa-sticky-note pr-1 text-info"></i
+        >{{ nasaImgObj.explanation }}
+      </p>
+      <div class="actions">
+        <!-- <div class="d-flex justify-content-between"> -->
+        <div class="d-flex justify-content-around">
+          <div class="p-2">
+            <p class="mb-0">
+              <app-svg-calender></app-svg-calender>
+              {{ nasaImgObj.date | date }}
+            </p>
+          </div>
+          <div class="p-2" *ngIf="nasaImgObj.copyright">
+            <p class="mb-0">
+              <app-svg-copyright></app-svg-copyright>
+              {{ nasaImgObj.copyright }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

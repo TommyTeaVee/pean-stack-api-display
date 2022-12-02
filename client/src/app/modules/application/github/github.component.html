@@ -1,0 +1,70 @@
+<head>
+  <meta name="description" content="Shows data from the Google Books api" />
+</head>
+
+<body>
+  <div class="main-div">
+    <!--card for user book search-->
+    <div class="card rounded">
+      <div class="card-header bg-light">
+        <img
+          class="header-image float-left"
+          src="../../../../assets/params/images/logo/github.png"
+          alt="Github logo"
+        />
+        <h5 class="card-title text-dark">Github API</h5>
+        <h6 class="card-subtitle font-italic">
+          Search by username
+        </h6>
+      </div>
+      <div class="card-body">
+        <form
+          #githubSearch="ngForm"
+          method="POST"
+          (ngSubmit)="submitForm(githubSearch); githubSearch.reset()"
+        >
+          <div class="input-group mb-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text text-light bg-dark">
+                <app-svg-pen></app-svg-pen>
+            </span>
+            </div>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              class="form-control"
+              minlength="4"
+              placeholder="Enter username"
+              aria-label="Enter username"
+              required
+              ngModel
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-dark"
+                type="submit"
+                [disabled]="!githubSearch.form.valid"
+              >
+                Search
+              </button>
+              <button
+                class="btn btn-warning"
+                type="button"
+                (click)="clearUser(); githubSearch.reset()"
+                [disabled]="!githubSearch.value.name"
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--cards for Github search results-->
+    <div class="github-card" *ngIf="!displayCleared">
+      <app-github-user [user]="user"></app-github-user>
+    </div>
+  </div>
+</body>

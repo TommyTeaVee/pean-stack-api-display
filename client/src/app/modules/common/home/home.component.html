@@ -1,0 +1,41 @@
+<head>
+  <meta
+    name="description"
+    content="Home page shows a collection of Bootstrap cards. Clicking on one routes to an API data display"
+  />
+</head>
+
+<!--use data-binding to show card details for all cards-->
+<div class="row">
+  <div
+    class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4"
+    *ngFor="let item of features; trackBy: featureTrackbyFn"
+  >
+    <div class="card full-height" routerLink="/{{ item.link }}">
+      <div>
+        <a>
+          <ngx-picture
+            class="card-img"
+            src="assets/params/images/api-images/{{ item.image }}"
+            width="640"
+            height="360"
+            alt="Card image {{ item.title }}"
+            [lazyLoad]="true"
+            #picture
+          >
+          </ngx-picture>
+        </a>
+      </div>
+      <div class="card-body">
+        <h6 class="card-title">
+          <span style="font-size: 14px"
+            ><strong>{{ item.title }} </strong></span
+          >
+        </h6>
+        <p class="mb-0">
+          {{ item.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

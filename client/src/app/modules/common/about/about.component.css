@@ -1,0 +1,18 @@
+.main-div {
+  /* display: flex; */
+  /* justify-content: center; */
+}
+
+.card {
+  max-width: 800px;
+  align-items: left;
+}
+
+/* button {
+  width: 160px;
+  align-items: left !important;
+} */
+
+a {
+  color: #6a5eff;
+}

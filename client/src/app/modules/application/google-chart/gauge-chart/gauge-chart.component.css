@@ -1,0 +1,11 @@
+#divGaugeChart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  color: #0d47a1;
+}
