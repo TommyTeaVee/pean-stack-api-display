@@ -6,8 +6,8 @@ import { Apod } from "../nasa-models/apod";
 import { catchError, take } from "rxjs/operators";
 
 const apiUrl = "https://api.nasa.gov/planetary/apod?";
-const apiKey = process.env.NASA_KEY;
-//const apiKey = "6jziDKGbSC1KSZUsNSTgfvkBxGdy1giBj6uPcztL";
+//const apiKey = process.env.NASA_KEY;
+const apiKey = "i7epslZeterLoOnXPU1I2MlbmgfgnKq0C5NWVvTL";
 
 @Injectable({
   providedIn: "root",

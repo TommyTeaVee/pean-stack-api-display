@@ -192,6 +192,15 @@ export class GithubService {
 * [SQLSERVER tutorial INT](https://www.sqlservertutorial.net/sql-server-basics/sql-server-int/)
 * [Deploy Angular 9+ apps to Firebase Hosting](https://blog.logrocket.com/deploy-angular-9-apps-to-firebase-hosting/)
 
+
+***REMARKS *****
+CODE SNIPPETS
+STAND ALONE COMPONENTS
+MOCKING DATA 
+BREAKDOWN SUBMODULE (GIT) 
+
+
+
 ## :clipboard: Status, Testing & To-Do List
 
 * **Status:** Deployed to Heroku. Backend working. Build file created with no errors. All files pass linting.

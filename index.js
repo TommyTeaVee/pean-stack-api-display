@@ -131,6 +131,7 @@ app.delete("/metals/:id", async (req, res) => {
 	}
 });
 
+//Link the Frontend and Backend to create a Fullstack landing page
 app.get("*", (req, res) => {
 	res.sendFile(
 		path.join(__dirname, "client/build/pean-stack-api-display/index.html")
